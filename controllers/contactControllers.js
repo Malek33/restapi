@@ -51,3 +51,14 @@ exports.deleteContacts = async(req, res) => {
     }
 
 }
+
+
+exports.getOneContacts = async(req, res) => {
+
+    try {
+        const deleteById = await contact.findById({ _id: req.params.id })
+        res.status(200).send({ msg: 'contact found', deleteById })
+    } catch (err) {
+        res.status(500).send(err)
+    }
+}
